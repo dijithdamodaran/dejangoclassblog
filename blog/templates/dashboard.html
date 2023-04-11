@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>seller dashboard</h1>
+    <p>
+        <a href="/addproduct">Add product</a>
+    </p>
+    <table border="1" align="center">
+        <tr>
+            <th>sr.no</th>
+            <th>produt name</th>
+            <th>categor</th>
+            <th>price</th>
+            <th>status</th>
+            <th>edit</th>
+            <th>delete</th>
+        </tr>
+        
+         {% for x in data %} 
+         <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.name}}</td>  
+
+            
+            {% if x.cat == '1'  %}
+            <td>Mobile</td>
+            {% else %}
+            <td>Cloths</td>
+            {% endif %}
+             
+
+            <td>{{x.price}}</td>
+
+            {% if x.status == '1'  %}
+            <td>Active</td>
+            {% else %}
+            <td>deactive</td>
+            {% endif %}
+             
+            <td><a href="/edit/{{x.id}}">Edit</a></td>
+            <td><a href="/delete{{x.id}}">Delete</a></td>
+         </tr>
+         {% endfor  %}
+</body>
+</html>

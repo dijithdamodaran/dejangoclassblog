@@ -13,6 +13,8 @@ urlpatterns = [
     path('home',views.homepage),
     path('aboutnew',views.aboutpage),
     path('addproduct',views.addproduct),
+    path('dash',views.dashbord),
+    path('static',views.staticfile),
 ]
 
 

@@ -7,15 +7,19 @@
     <title>add products</title>
 </head>
 <body>
-    <form method="" action="">
+    <h1>Add product section</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
         <table>
 
             <tr>
-                <td> prodect name:</td>
+                <th> prodect name:</th>
                 <td>
                     <input type="text" name="pname">
                 </td>
             </tr>
+
+            
 
             <tr>
                 <th> catagory:</th>
@@ -29,7 +33,14 @@
             </tr>
 
             <tr>
-                <td> status:</td>
+                <th> price:</th>
+                <td>
+                    <input type="number" name="amd">
+                </td>
+            </tr>
+
+            <tr>
+                <th> status:</th>
                 <td>
                     <input type="radio" name="status" value="1">active
                 </td>
