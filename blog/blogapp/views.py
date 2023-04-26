@@ -1,6 +1,9 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from blogapp.models import product
+from blogapp.forms import EmpFormClass
+
+
 def about(request):
     #return HttpResponse("hello this is function based view")
     return redirect('/contact')
@@ -9,11 +12,32 @@ def contact(request):
     return HttpResponse("hello this is function based view contact")
 
 def edit(request,rid):
-    p=product.objects.filter(id=rid)
-    return HttpResponse("ID to be edited:"+rid)
+    if request.method == "POST":
+    
+        #fetch new changes from the form and 
+        product_name=request.POST['pname']
+        pcat=request.POST['cat']
+        amount=request.POST['amd']
+        stat=request.POST['status']
+        print(product_name)
+        p=product.objects.filter(id=rid)
+        p.update(name=product_name,cat=pcat,price=amount,status=stat )
+        return redirect('/dash')
+
+        # update it in the database
+    else:
+        
+        #send current details along with form for
+        p=product.objects.filter(id=rid)
+        content={}
+        content['data']=p 
+        return render(request,'edit.html',content)
+    #p=product.objects.filter(id=rid)
+    #return HttpResponse("ID to be edited:"+rid)
+
 
 def delete(request,rid):
-    p=product.objects.filter(id=rid)
+    p=product.objects.filter(id=rid) 
     #print(p)
     p.delete()
     return redirect('/dash')
@@ -40,6 +64,11 @@ def homepage(request):
     return render(request,'home.html')
 def aboutpage(request):
     return render(request,'aboutnew.html')
+
+def setcookie(request):
+        res=render(request,'setcookie.html')
+        res.set_cookie('name','Itvedant')
+        res.set_cookie('rollno','34') 
 
 def addproduct(request):
     print("method=",request.method)
@@ -70,6 +99,33 @@ def dashbord(request):
     content={}
     content['data']=qset
     return render(request,'dashboard.html',content)
+
+
 # Create your views here.
 def staticfile(request):
     return render(request,'learnstatic.html')
+
+def django_form(request):
+
+    if request.method=="POST":
+        name=request.POST['empname']
+        mob=request.POST['mobile']
+        dept=request.POST['department']
+        dt=request.POST['date_of_joining']
+        print("employee:",name)
+        print("Mobile:",mob)
+        print("department:",dept)
+        print("date of joining:",dt)
+
+    else:
+
+        dfobj=EmpFormClass()
+        #print(dfobj)
+        content={}
+        content['form']=dfobj
+        return render(request,'empform.html',content)
+    
+    
+
+
+

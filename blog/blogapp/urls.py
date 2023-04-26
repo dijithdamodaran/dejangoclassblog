@@ -15,6 +15,8 @@ urlpatterns = [
     path('addproduct',views.addproduct),
     path('dash',views.dashbord),
     path('static',views.staticfile),
+    path('djforms',views.django_form),
+    path('setcookie',views.setcookie),
 ]
 
 

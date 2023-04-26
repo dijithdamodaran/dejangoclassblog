@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit products</title>
+</head>
+<body>
+    <h1>edit product section</h1>
+    <hr>
+
+    {% for x in data %}
+
+    <form method="POST" action="">
+        {% csrf_token %}
+       
+        <table>
+
+            <tr>
+                <th> prodect name:</th>
+                <td>
+                    <input type="text" name="pname" value="{{x.name}}">
+                </td>
+            </tr>
+
+            
+
+            <tr>
+                <th> catagory:</th>
+                <td>
+                    <select name="cat">
+                        {% if x.cat == '1' %}
+                        <option value="1">mobile</option>
+                        {% else %}
+                        <option value="2">cloths</option>
+                        {% endif %}
+
+                        <option value="1">Mobile</option>
+                        <option value="2">Cloths</option>
+
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <th> price:</th>
+                <td>
+                    <input type="number" name="amd" value="{{x.price}}">
+                </td>
+            </tr>
+
+            <tr>
+                <th> status:</th>
+                <td>
+                    {% if x.status == '1' %}
+                    <input type="radio" name="status" value="1" checked>active
+                
+                    <input type="radio" name="status" value="0" >deactive
+               
+                {% else %}
+                <input type="radio" name="status" value="1" >active
+                
+                    <input type="radio" name="status" value="0" checked>deactive
+                
+                {% endif %}
+            </td>
+
+            </tr>
+
+            <tr>
+                <td> <button type="submit">save</button></td>
+                
+            </tr>
+
+        
+
+
+        </table>
+
+
+    </form>
+
+    {% endfor %}
+</body>
+</html>
