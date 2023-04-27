@@ -100,6 +100,21 @@ def dashbord(request):
     content['data']=qset
     return render(request,'dashboard.html',content)
 
+#filters start
+def catfilter(request,cv):
+    p=product.objects.filter(cat=cv)
+    #print(p)
+    content={}
+    content['data']=p
+    return render(request,'dashboard.html',content)
+
+def statfilter(request,sv):
+    p=product.objects.filter(status=sv)
+    #print(p)
+    content={}
+    content['data']=p
+    return render(request,'dashboard.html',content)
+
 
 # Create your views here.
 def staticfile(request):

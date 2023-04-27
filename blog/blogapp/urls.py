@@ -14,6 +14,8 @@ urlpatterns = [
     path('aboutnew',views.aboutpage),
     path('addproduct',views.addproduct),
     path('dash',views.dashbord),
+    path('catfilter/<cv>',views.catfilter),
+    path('statfilter/<sv>',views.statfilter),
     path('static',views.staticfile),
     path('djforms',views.django_form),
     path('setcookie',views.setcookie),

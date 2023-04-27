@@ -47,5 +47,20 @@
             <td><a href="/delete/{{x.id}}">Delete</a></td>
          </tr>
          {% endfor  %}
+    </table>
+
+    <div>
+        <h2>filter by status</h2>
+        <p><a href="/dash">All</a></p>
+        <p><a href="/statfilter/1">Active</a></p>
+        <p><a href="/statfilter/0">Inactive</a></p>
+    </div>
+
+    <div>
+        <h2>Filter by Category</h2>
+        <p><a href="/dash">All</a></p>
+        <p><a href="/catfilter/1">Mobile</a></p>
+        <p><a href="/catfilter/2">Cloths</a></p>
+    </div>
 </body>
 </html>
