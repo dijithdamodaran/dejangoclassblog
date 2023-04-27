@@ -126,6 +126,17 @@ def sortfilter(request,x):
     content={}
     content['data']=p
     return render(request,'dashboard.html',content) 
+
+def pricefilter(request,x):
+
+    if x=='1':
+        p=product.objects.order_by('-price').filter(price__gte=12000)
+    else:
+        p=product.objects.filter(price__lte=12000)
+    content={}
+    content['data']=p
+    return render(request,'dashboard.html',content) 
+
     
 
 
