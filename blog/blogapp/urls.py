@@ -16,6 +16,7 @@ urlpatterns = [
     path('dash',views.dashbord),
     path('catfilter/<cv>',views.catfilter),
     path('statfilter/<sv>',views.statfilter),
+    path('sort/<x>',views.sortfilter),
     path('static',views.staticfile),
     path('djforms',views.django_form),
     path('setcookie',views.setcookie),

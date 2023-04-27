@@ -116,6 +116,19 @@ def statfilter(request,sv):
     return render(request,'dashboard.html',content)
 
 
+def sortfilter(request,x):
+    if x=='0':
+        p=product.objects.order_by('price')
+
+    else:
+        p=product.objects.order_by('-price')
+
+    content={}
+    content['data']=p
+    return render(request,'dashboard.html',content) 
+    
+
+
 # Create your views here.
 def staticfile(request):
     return render(request,'learnstatic.html')
