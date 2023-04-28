@@ -21,6 +21,7 @@ urlpatterns = [
     path('static',views.staticfile),
     path('djforms',views.django_form),
     path('setcookie',views.setcookie),
+    path('multifilter',views.multifilter),
 ]
 
 

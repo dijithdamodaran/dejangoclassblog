@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from blogapp.models import product
+from django.db.models import Q
 from blogapp.forms import EmpFormClass
 
 
@@ -136,6 +137,20 @@ def pricefilter(request,x):
     content={}
     content['data']=p
     return render(request,'dashboard.html',content) 
+
+def multifilter(request):
+    if request.method=="POST":
+        cv=request.POST['category']
+        sv=request.POST['status']
+        #print(cv)
+        #print(sv)
+        q1=Q(cat=cv)
+        q2=Q(status=sv)
+        p=product.objects.filter(q1 & q2)
+        content={}
+        content['data']=p
+        return render(request,'dashboard.html',content)
+
 
     
 

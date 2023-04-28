@@ -75,5 +75,24 @@
         <p><a href="/filprice/2"> < 12000</a></p>
     </div>
 
+    <div>
+
+        <form method="POST" action="/multifilter">
+            {% csrf_token %}
+
+            <h2>Filter by Category</h2>
+            <p><input type="radio" name="category" value="1" id="">Mobile</p>
+            <p><input type="radio" name="category" value="2" id="">Cloths</p>
+
+            <h2>Filter by Status</h2>
+            <p><input type="radio" name="status" value="1" id="">Active</p>
+            <p><input type="radio" name="status" value="0" id="">Inactive</p>
+
+            <p><input type="submit" value="Applay"></p>
+
+
+        </form>
+    </div>
+
 </body>
 </html>
