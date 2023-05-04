@@ -69,9 +69,28 @@ def aboutpage(request):
 def setcookie(request):
         res=render(request,'setcookie.html')
         res.set_cookie('name','Itvedant')
-        res.set_cookie('rollno','34') 
+        res.set_cookie('rno',354) 
+        return res
 
-def addproduct(request):
+def getcookie(request):
+    name=request.COOKIES['name']
+    rnum=request.COOKIES['rno']
+    content={}
+    content['n']=name
+    content['r']=rnum
+    return render(request,'getcookie.html',content)
+
+def setsession(request):
+
+    request.session['name']="Itvedant Eclass"
+    return render(request,'setsession.html')
+
+def getsession(request):
+    content={}
+    content['n']=request.session['name']
+    return render(request,'getsession.html',content)
+
+def addproduct(request): 
     print("method=",request.method)
     if request.method=="POST":
         product_name=request.POST["pname"]
