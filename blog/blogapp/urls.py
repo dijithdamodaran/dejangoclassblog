@@ -25,6 +25,7 @@ urlpatterns = [
     path('multifilter',views.multifilter),
     path('setsession',views.setsession),
     path('getsession',views.getsession),
+    path('modelform',views.modelform),
 ]
 
 

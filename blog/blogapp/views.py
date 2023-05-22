@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from blogapp.models import product
 from django.db.models import Q
-from blogapp.forms import EmpFormClass
+from blogapp.forms import EmpFormClass,ProductForm 
+
 
 
 def about(request):
@@ -197,6 +198,16 @@ def django_form(request):
         content={}
         content['form']=dfobj
         return render(request,'empform.html',content)
+    
+def modelform(request):
+    if request.method=='POST':
+        pass
+    else:
+        mfobj=ProductForm()
+        #print(mfobj)
+        content={'form':mfobj}
+        return render(request,'addproductmodel.html',content)   
+
     
     
 
