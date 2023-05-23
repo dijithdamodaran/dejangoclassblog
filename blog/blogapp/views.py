@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from blogapp.models import product
 from django.db.models import Q
-from blogapp.forms import EmpFormClass,ProductForm 
+from blogapp.forms import EmpFormClass,ProductForm,UserRegister
+from django.contrib.auth.forms import UserCreationForm
 
 
 
@@ -207,6 +208,21 @@ def modelform(request):
         #print(mfobj)
         content={'form':mfobj}
         return render(request,'addproductmodel.html',content)   
+    
+def user_register(request):
+
+    if request.method=="POST":
+        pass
+
+    else:
+
+        #regfm=UserCreationForm()
+        regfm=UserRegister()
+        #print(regfm)
+        content={'regfm':regfm} 
+        return render(request,'register.html',content)
+    
+
 
     
     

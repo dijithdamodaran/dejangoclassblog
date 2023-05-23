@@ -26,6 +26,7 @@ urlpatterns = [
     path('setsession',views.setsession),
     path('getsession',views.getsession),
     path('modelform',views.modelform),
+    path('register',views.user_register),
 ]
 
 

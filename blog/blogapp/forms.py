@@ -1,5 +1,8 @@
 from django import forms
 from blogapp.models import product
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+ 
 
 
 class EmpFormClass(forms.Form):
@@ -19,4 +22,11 @@ class ProductForm(forms.ModelForm):
     class Meta:
         model=product
         fields=['name','cat','price','status']
+
+class UserRegister(UserCreationForm):
+    class Meta:
+        model=User
+        fields=['username','first_name','last_name','email']
+ 
+
  
