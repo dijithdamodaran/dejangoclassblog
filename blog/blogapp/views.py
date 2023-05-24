@@ -210,9 +210,15 @@ def modelform(request):
         return render(request,'addproductmodel.html',content)   
     
 def user_register(request):
+    content={}
 
     if request.method=="POST":
-        pass
+        regfm=UserRegister(request.POST)
+        #print(regfm.is_valid())
+        if regfm.is_valid():
+            regfm.save()
+            content["msg"]="User Register Successfully"
+            return render(request,'registersuccess.html',content)
 
     else:
 
