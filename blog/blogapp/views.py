@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from blogapp.models import product
 from django.db.models import Q
 from blogapp.forms import EmpFormClass,ProductForm,UserRegister
-from django.contrib.auth.forms import UserCreationForm
-
+from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
+from django.contrib.auth import authenticate
 
 
 def about(request):
@@ -227,6 +227,29 @@ def user_register(request):
         #print(regfm)
         content={'regfm':regfm} 
         return render(request,'register.html',content)
+    
+def user_login(request):
+    if request.method=="POST":
+        logfm=AuthenticationForm(request=request,data=request.POST)
+        #print(logfm)
+        if logfm.is_valid():
+            uname=logfm.cleaned_data['username']
+            upass=logfm.cleaned_data['password']
+            #print(uname)
+            #print(upass)
+            res=authenticate(username=uname,password=upass)
+            #print(res)
+            if res:
+                return redirect('/dash')
+
+
+    else:
+        logfm=AuthenticationForm()
+        #print(logfm)
+        content={}
+        content['form']=logfm
+        return render(request,'login.html',content)
+
     
 
 

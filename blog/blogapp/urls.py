@@ -27,6 +27,7 @@ urlpatterns = [
     path('getsession',views.getsession),
     path('modelform',views.modelform),
     path('register',views.user_register),
+    path('login',views.user_login),
 ]
 
 
